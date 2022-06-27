@@ -16,12 +16,20 @@ class GithubDataViewModel extends ChangeNotifier {
 
   bool? _isLoading = false;
   GithubDataModel? _dataModel;
+  List<ProjectItem>? _projectItems = [];
   set isLoading(bool? v) {
     _isLoading = v;
     notifyListeners();
   }
 
   bool? get isLoading => _isLoading;
+
+  set projectItems(List<ProjectItem>? v) {
+    _projectItems = v;
+    notifyListeners();
+  }
+
+  List<ProjectItem>? get projectItems => _projectItems;
 
   set dataModel(GithubDataModel? v) {
     _dataModel = v;
@@ -56,6 +64,7 @@ class GithubDataViewModel extends ChangeNotifier {
     }, (r) {
       _isLoading = false;
       _dataModel = r;
+      _projectItems = r.projectItems;
       notifyListeners();
     });
   }

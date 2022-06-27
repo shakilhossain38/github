@@ -17,7 +17,7 @@ class GithubDataRepository {
         GithubDataViewModel.read(appNavigator.context!).partialUrl.toString());
     try {
       if (response.statusCode == 200) {
-        debugPrint("repositories list${response.body}", wrapWidth: 1024);
+        debugPrint("repositories list${response.body}");
         GithubDataModel data =
             githubDataModelFromJson(utf8.decode(response.bodyBytes));
         return Right(data);

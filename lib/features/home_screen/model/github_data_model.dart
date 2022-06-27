@@ -177,7 +177,7 @@ class ProjectItem {
   String? svnUrl;
   String? homepage;
   int? size;
-  int? stargazersCount;
+  double? stargazersCount;
   int? watchersCount;
   String? language;
   bool? hasIssues;
@@ -262,7 +262,7 @@ class ProjectItem {
         svnUrl: json["svn_url"],
         homepage: json["homepage"],
         size: json["size"],
-        stargazersCount: json["stargazers_count"],
+        stargazersCount: json["stargazers_count"]/1000,
         watchersCount: json["watchers_count"],
         language: json["language"],
         hasIssues: json["has_issues"],
