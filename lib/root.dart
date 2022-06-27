@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:github_repositories_list/features/home_screen/views/home_screen.dart';
 import 'package:provider/provider.dart';
 
-import 'features/home_screen/view_model/url_view_model.dart';
+import 'features/home_screen/view_model/github_data_view_model.dart';
 import 'main_app/app_navigator.dart';
 import 'main_app/resource/colors.dart';
 
@@ -13,7 +13,8 @@ class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var providers = [
-      ChangeNotifierProvider<GithubDataViewModel>(create: (context) => GithubDataViewModel()),
+      ChangeNotifierProvider<GithubDataViewModel>(
+          create: (context) => GithubDataViewModel()),
     ];
     return MultiProvider(
       providers: providers,

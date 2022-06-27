@@ -3,5 +3,5 @@ class Urls {
       // FlavorConfig.isProduction()
       //   "https://programming.flaxsoft.com";
 
-      "https://api.github.com/search/repositories?q=flutter&per_page=10&page=50";
+      "https://api.github.com/search/repositories?q=flutter&per_page=50&page=1";
 }

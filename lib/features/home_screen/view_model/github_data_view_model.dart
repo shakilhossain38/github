@@ -1,8 +1,11 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:github_repositories_list/features/home_screen/repository/github_data_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../model/github_data_model.dart';
 
 class GithubDataViewModel extends ChangeNotifier {
   String? partialUrl;
@@ -10,6 +13,23 @@ class GithubDataViewModel extends ChangeNotifier {
       context.read<GithubDataViewModel>();
   static GithubDataViewModel watch(BuildContext context) =>
       context.watch<GithubDataViewModel>();
+
+  bool? _isLoading = false;
+  GithubDataModel? _dataModel;
+  set isLoading(bool? v) {
+    _isLoading = v;
+    notifyListeners();
+  }
+
+  bool? get isLoading => _isLoading;
+
+  set dataModel(GithubDataModel? v) {
+    _dataModel = v;
+    notifyListeners();
+  }
+
+  GithubDataModel? get dataModel => _dataModel;
+
   Future<String?> getPartialUrl() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var partialUrl = prefs.getString('partialUrl') ?? "";
@@ -25,5 +45,18 @@ class GithubDataViewModel extends ChangeNotifier {
     prefs.setString("partialUrl", partialUrl);
     this.partialUrl = partialUrl;
     notifyListeners();
+  }
+
+  Future<void> getRepositories() async {
+    _isLoading = true;
+    var res = await GithubDataRepository().fetchRepositories();
+    res.fold((l) {
+      _isLoading = false;
+      notifyListeners();
+    }, (r) {
+      _isLoading = false;
+      _dataModel = r;
+      notifyListeners();
+    });
   }
 }
