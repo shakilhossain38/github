@@ -9,7 +9,10 @@ import '../model/github_data_model.dart';
 
 class GithubDataViewModel extends ChangeNotifier {
   String? partialUrl;
+  String? githubDataForOffline;
   String? filter;
+  String? lastApiCallTime;
+
   static GithubDataViewModel read(BuildContext context) =>
       context.read<GithubDataViewModel>();
   static GithubDataViewModel watch(BuildContext context) =>
@@ -53,6 +56,42 @@ class GithubDataViewModel extends ChangeNotifier {
     debugPrint('partialUrlSet $partialUrl');
     prefs.setString("partialUrl", partialUrl);
     this.partialUrl = partialUrl;
+    notifyListeners();
+  }
+
+  Future<String?> getApiCallingTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var lastApiCallTime =
+        prefs.getString('lastApiCallTime') ?? DateTime.now().toString();
+    debugPrint("lastApiCallTimeFromGet: $lastApiCallTime");
+    this.lastApiCallTime = lastApiCallTime;
+    notifyListeners();
+    return lastApiCallTime;
+  }
+
+  setApiCallingTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // debugPrint('lastApiCallTimeSet ${DateTime.now().toString()}');
+    prefs.setString("lastApiCallTime", DateTime.now().toString());
+    lastApiCallTime = DateTime.now().toString();
+    notifyListeners();
+  }
+
+  Future<String?> getOfflineData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var githubDataForOffline = prefs.getString('githubDataForOffline') ?? "";
+    // debugPrint("githubDataForOfflineFromGet: $githubDataForOffline",
+    //   wrapWidth: 1024);
+    this.githubDataForOffline = githubDataForOffline;
+    notifyListeners();
+    return githubDataForOffline;
+  }
+
+  setOfflineData(String githubDataForOffline) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    debugPrint('githubDataForOfflineSet $githubDataForOffline');
+    prefs.setString("githubDataForOffline", githubDataForOffline);
+    this.githubDataForOffline = githubDataForOffline;
     notifyListeners();
   }
 

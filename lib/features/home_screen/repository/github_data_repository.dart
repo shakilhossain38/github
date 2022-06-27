@@ -17,7 +17,12 @@ class GithubDataRepository {
         GithubDataViewModel.read(appNavigator.context!).partialUrl.toString());
     try {
       if (response.statusCode == 200) {
+        var vm = GithubDataViewModel.read(appNavigator.context!);
         debugPrint("repositories list${response.body}");
+
+        vm.setOfflineData(utf8.decode(response.bodyBytes));
+        await vm.setApiCallingTime();
+        await vm.getApiCallingTime();
         GithubDataModel data =
             githubDataModelFromJson(utf8.decode(response.bodyBytes));
         return Right(data);
