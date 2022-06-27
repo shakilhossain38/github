@@ -19,11 +19,13 @@ class _CommonListTileState extends State<CommonListTile> {
     );
     var data = widget.projectItem;
     String getDuration() {
-      String result = data!.updatedAt
+      String result = data!.pushedAt
           .toString()
-          .substring(0, data.updatedAt.toString().indexOf('.'));
-      int? totalSecond =
-          DateTime.now().difference(DateTime.parse(result)).inSeconds;
+          .substring(0, data.pushedAt.toString().indexOf('.'));
+      int? totalSecond = DateTime.now()
+          .difference(
+              DateTime.parse(result).toLocal().add(const Duration(hours: 6)))
+          .inSeconds;
       int day = totalSecond ~/ (24 * 3600);
 
       totalSecond = totalSecond % (24 * 3600);
@@ -40,7 +42,7 @@ class _CommonListTileState extends State<CommonListTile> {
           : hour > 0
               ? "${hour < 10 ? "0$hour" : hour}${hour > 1 ? "h" : "h"} ${minutes == 0 ? "" : "${minutes < 10 ? "0$minutes" : minutes}${minutes > 1 ? "m" : "m"}"}"
               : minutes > 0
-                  ? "${minutes < 10 ? "0$minutes" : minutes}${minutes > 1 ? "m" : "m"}${second == 0 ? "" : "${second < 10 ? "0$second" : second}${second > 1 ? "s" : "s"}"}"
+                  ? "${minutes < 10 ? "0$minutes" : minutes}${minutes > 1 ? "m" : "m"} ${second == 0 ? "" : "${second < 10 ? "0$second" : second}${second > 1 ? "s" : "s"}"}"
                   : "${second < 10 ? "0$second" : second}${second > 1 ? "s" : "s"}";
     }
 
@@ -59,7 +61,7 @@ class _CommonListTileState extends State<CommonListTile> {
                 fontSize: 14),
           );
     var starCountWidget = SizedBox(
-      width: width * .2,
+      //width: width * .19,
       child: Row(
         children: [
           const Icon(Icons.star_border),
@@ -70,19 +72,59 @@ class _CommonListTileState extends State<CommonListTile> {
         ],
       ),
     );
+    var forkCountWidget = SizedBox(
+      //width: width * .19,
+      child: Row(
+        children: [
+          const Icon(Icons.fork_left_outlined),
+          const SizedBox(
+            width: 2,
+          ),
+          Text("${data.forksCount?.toStringAsFixed(2)}k"),
+        ],
+      ),
+    );
+    var watcherWidget = SizedBox(
+      //width: width * .19,
+      child: Row(
+        children: [
+          const Icon(Icons.remove_red_eye),
+          const SizedBox(
+            width: 2,
+          ),
+          Text("${data.watchers?.toStringAsFixed(2)}k"),
+        ],
+      ),
+    );
     var languageWidget = SizedBox(
-      width: width * .22,
+      // width: width * .25,
       child: Row(
         children: [
           data.language == null || data.language == ""
               ? const SizedBox()
-              : Container(
-                  height: 15,
-                  width: 15,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color:
-                          data.language == "Dart" ? Colors.teal : Colors.red),
+              : Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Container(
+                    height: 15,
+                    width: 15,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: data.language == "Dart"
+                            ? Colors.teal
+                            : data.language == "Python"
+                                ? Colors.blue
+                                : data.language == "C"
+                                    ? Colors.grey
+                                    : data.language == "C#"
+                                        ? Colors.green
+                                        : data.language == "JavaScript"
+                                            ? Colors.yellowAccent
+                                            : data.language == "Java"
+                                                ? Colors.yellowAccent.shade100
+                                                : data.language == "PHP"
+                                                    ? Colors.purple
+                                                    : Colors.red),
+                  ),
                 ),
           const SizedBox(
             width: 5,
@@ -92,14 +134,14 @@ class _CommonListTileState extends State<CommonListTile> {
       ),
     );
     var durationWidget = SizedBox(
-        width: width * .4,
+        //width: width * .4,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(),
-            Text("Updated ${getDuration()} ago"),
-          ],
-        ));
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SizedBox(),
+        Text(data.pushedAt == null ? "" : "Updated ${getDuration()} ago"),
+      ],
+    ));
     return Container(
       margin: const EdgeInsets.all(8),
       constraints: const BoxConstraints(
@@ -126,9 +168,21 @@ class _CommonListTileState extends State<CommonListTile> {
             spaceBetween,
             descriptionWidget,
             spaceBetween,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [starCountWidget, languageWidget, durationWidget],
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    starCountWidget,
+                    forkCountWidget,
+                  ],
+                ),
+                spaceBetween,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [languageWidget, durationWidget],
+                ),
+              ],
             )
           ],
         ),

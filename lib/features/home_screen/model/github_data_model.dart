@@ -185,7 +185,7 @@ class ProjectItem {
   bool? hasDownloads;
   bool? hasWiki;
   bool? hasPages;
-  int? forksCount;
+  double? forksCount;
   dynamic mirrorUrl;
   bool? archived;
   bool? disabled;
@@ -197,7 +197,7 @@ class ProjectItem {
   String? visibility;
   int? forks;
   int? openIssues;
-  int? watchers;
+  double? watchers;
   String? defaultBranch;
   double? score;
 
@@ -262,7 +262,7 @@ class ProjectItem {
         svnUrl: json["svn_url"],
         homepage: json["homepage"],
         size: json["size"],
-        stargazersCount: json["stargazers_count"]/1000,
+        stargazersCount: json["stargazers_count"] / 1000,
         watchersCount: json["watchers_count"],
         language: json["language"],
         hasIssues: json["has_issues"],
@@ -270,7 +270,7 @@ class ProjectItem {
         hasDownloads: json["has_downloads"],
         hasWiki: json["has_wiki"],
         hasPages: json["has_pages"],
-        forksCount: json["forks_count"],
+        forksCount: json["forks_count"] / 1000,
         mirrorUrl: json["mirror_url"],
         archived: json["archived"],
         disabled: json["disabled"],
@@ -285,7 +285,7 @@ class ProjectItem {
         visibility: json["visibility"],
         forks: json["forks"],
         openIssues: json["open_issues"],
-        watchers: json["watchers"],
+        watchers: json["watchers"]/1000,
         defaultBranch: json["default_branch"],
         score: json["score"],
       );

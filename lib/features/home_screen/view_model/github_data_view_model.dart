@@ -9,6 +9,7 @@ import '../model/github_data_model.dart';
 
 class GithubDataViewModel extends ChangeNotifier {
   String? partialUrl;
+  String? filter;
   static GithubDataViewModel read(BuildContext context) =>
       context.read<GithubDataViewModel>();
   static GithubDataViewModel watch(BuildContext context) =>
@@ -52,6 +53,23 @@ class GithubDataViewModel extends ChangeNotifier {
     debugPrint('partialUrlSet $partialUrl');
     prefs.setString("partialUrl", partialUrl);
     this.partialUrl = partialUrl;
+    notifyListeners();
+  }
+
+  Future<String?> getFilter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var filter = prefs.getString('filter') ?? "Best Match";
+    debugPrint("filterFromGet: $filter");
+    this.filter = filter;
+    notifyListeners();
+    return filter;
+  }
+
+  setFilter(String filter) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    debugPrint('filterSet $filter');
+    prefs.setString("filter", filter);
+    this.filter = filter;
     notifyListeners();
   }
 
