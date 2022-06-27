@@ -1,7 +1,7 @@
-class Urls {
-  static String get baseUrl =>
-      // FlavorConfig.isProduction()
-      //   "https://programming.flaxsoft.com";
+import '../flavour/flavour_config.dart';
 
-      "https://api.github.com/search/repositories?q=flutter&per_page=50&page=1";
+class Urls {
+  static String get baseUrl => FlavorConfig.isProduction()
+      ? "https://api.github.com/search/repositories?q=flutter&per_page=50&page=1"
+      : "https://api.github.com/search/repositories?q=flutter&per_page=50&page=1";
 }

@@ -62,7 +62,7 @@ class GithubDataViewModel extends ChangeNotifier {
   Future<String?> getApiCallingTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var lastApiCallTime =
-        prefs.getString('lastApiCallTime') ?? DateTime.now().toString();
+        prefs.getString('lastApiCallTime');
     debugPrint("lastApiCallTimeFromGet: $lastApiCallTime");
     this.lastApiCallTime = lastApiCallTime;
     notifyListeners();

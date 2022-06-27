@@ -5,7 +5,7 @@ import 'main_app/flavour/flavour_config.dart';
 
 void main() {
   FlavorConfig(
-    flavor: Flavor.DEV,
+    flavor: Flavor.PRODUCTION,
     color: Colors.deepPurpleAccent,
   );
   runApp(const Root());

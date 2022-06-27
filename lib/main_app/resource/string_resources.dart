@@ -1,5 +1,5 @@
 class StringResources {
-  //Dashboard
+  //Home
   static String githubText = "Github";
   static String bestMatchText = "Best Match";
   static String mostStarsText = "Most Stars";
@@ -8,4 +8,8 @@ class StringResources {
   static String fewestForksText = "Fewest Forks";
   static String recentlyUpdatedText = "Recently Updated";
   static String leastRecentlyUpdatedText = "Least Recently Updated";
+  static String enumName(String enumToString) {
+    List<String> paths = enumToString.split(".");
+    return paths[paths.length - 1];
+  }
 }
