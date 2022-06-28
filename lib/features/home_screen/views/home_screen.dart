@@ -71,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
           )),
       PopupMenuItem(
         value: StringResources.mostStarsText,
-        child: Text(StringResources.mostStarsText),
+        child: Text(
+          StringResources.mostStarsText,
+        ),
       ),
       PopupMenuItem(
           value: StringResources.fewestStarsText,
@@ -97,15 +99,17 @@ class _HomeScreenState extends State<HomeScreen> {
               FlavorConfig.isProduction() ? Colors.transparent : Colors.red),
       child: Scaffold(
           appBar: AppBar(
-            title: Text(StringResources.githubText),
+            title: Text(StringResources.githubText,
+                key: const Key("homeAppbarKey")),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: PopupMenuButton(
+                    key: const Key("homePopupMeuKey"),
                     child: Row(
                       children: [
                         const Icon(Icons.keyboard_arrow_down_rounded),
-                        Text(itemString ?? ""),
+                        Text(itemString ?? "", key: const Key("sortKey")),
                       ],
                     ),
                     itemBuilder: (context) {
@@ -148,6 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: vm.projectItems?.length ?? 0,
                       itemBuilder: (context, index) {
                         return CommonListTile(
+                          key: Key("projectCard$index"),
                           projectItem: vm.projectItems![index],
                         );
                       }),
