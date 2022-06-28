@@ -12,4 +12,4 @@ git commit -m "Version Upgraded to $version" pubspec.yaml
 #flutter build apk  --flavor dev  --profile
 #flutter build apk  --flavor dev --release
 #flutter build apk  --flavor dev --target-platform android-arm,android-arm64 --release
-flutter build apk  --flavor dev --target-platform android-arm,android-arm64 --release --tree-shake-icons --split-debug-info --obfuscate -t lib/main.dart
+flutter build apk --split-per-abi --flavor dev --target-platform android-arm,android-arm64 --release --tree-shake-icons --split-debug-info --obfuscate -t lib/main.dart

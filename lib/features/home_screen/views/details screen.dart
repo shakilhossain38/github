@@ -57,7 +57,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           const SizedBox(
             width: 5,
           ),
-          Text(DateFormat("MM-dd-yy hh:mm:ss a").format(DateTime.parse(date!))),
+          Text(DateFormat("MM-dd-yy hh:mm:ss a")
+              .format(DateTime.parse(date!).toLocal())),
         ],
       );
     }
