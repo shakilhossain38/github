@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:github_repositories_list/features/home_screen/model/github_data_model.dart';
+import 'package:github_repositories_list/features/home_screen/views/details%20screen.dart';
 import 'package:github_repositories_list/features/home_screen/views/widgets/common_list_tile_card.dart';
 import 'package:github_repositories_list/main_app/resource/string_resources.dart';
 import 'package:github_repositories_list/main_app/utils/api_client.dart';
@@ -151,9 +152,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListView.builder(
                       itemCount: vm.projectItems?.length ?? 0,
                       itemBuilder: (context, index) {
-                        return CommonListTile(
-                          key: Key("projectCard$index"),
-                          projectItem: vm.projectItems![index],
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return DetailsScreen(
+                                projectItem: vm.projectItems![index],
+                              );
+                            }));
+                          },
+                          child: CommonListTile(
+                            key: Key("projectCard$index"),
+                            projectItem: vm.projectItems![index],
+                          ),
                         );
                       }),
                 )),

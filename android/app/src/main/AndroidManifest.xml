@@ -2,9 +2,9 @@
     package="com.example.github_repositories_list">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="github_repositories_list"
+        android:label="Github Flutter"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/github">
         <activity
             android:name=".MainActivity"
             android:exported="true"

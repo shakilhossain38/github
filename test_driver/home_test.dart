@@ -6,11 +6,11 @@ import 'package:github_repositories_list/main_app/resource/keys.dart';
 import 'package:github_repositories_list/main_app/resource/string_resources.dart';
 
 main() {
-  appointmentNotCompleted();
+  homeTest();
 }
 
-Future<void> appointmentNotCompleted() async {
-  group('Appointment not completed test', () {
+Future<void> homeTest() async {
+  group('home test', () {
     FlutterDriver? driver;
     setUpAll(() async {
       driver = await FlutterDriver.connect();
@@ -31,106 +31,106 @@ Future<void> appointmentNotCompleted() async {
         await Future.delayed(const Duration(seconds: 1), () {});
       });
     });
-    //
-    // test('when__try_to_get_most_star_projects__should__get_most_stars_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.mostStarsText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(
-    //         await driver!.getText(Keys.sortKey), StringResources.mostStarsText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
-    //
-    // test('when__try_to_get_fewest_star_projects__should__get_fewest_stars_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.fewestStarsText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(await driver!.getText(Keys.sortKey),
-    //         StringResources.fewestStarsText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
-    //
-    // test('when__try_to_get_most_forks_projects__should__get_most_forks_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.mostForksText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(
-    //         await driver!.getText(Keys.sortKey), StringResources.mostForksText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
-    //
-    // test(
-    //     'when__try_to_get_fewest_forks_projects__should__get_fewest_forks_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.fewestForksText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(await driver!.getText(Keys.sortKey),
-    //         StringResources.fewestForksText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
-    //
-    // test(
-    //     'when__try_to_most_recently_updated_projects__should__get_most_recently_updated_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.recentlyUpdatedText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(await driver!.getText(Keys.sortKey),
-    //         StringResources.recentlyUpdatedText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
-    // test(
-    //     'when__try_to_least_recently_updated_projects__should__get_least_recently_updated_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.leastRecentlyUpdatedText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(await driver!.getText(Keys.sortKey),
-    //         StringResources.leastRecentlyUpdatedText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
-    //
-    // test('when__try_to_best_match_projects__should__get_best_match_text',
-    //     () async {
-    //   await driver!.runUnsynchronized(() async {
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(Keys.homePopupMeuKey);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     await driver!.tap(find.text(StringResources.bestMatchText));
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //     expect(
-    //         await driver!.getText(Keys.sortKey), StringResources.bestMatchText);
-    //     await Future.delayed(const Duration(seconds: 1), () {});
-    //   });
-    // });
+
+    test('when__try_to_get_most_star_projects__should__get_most_stars_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.mostStarsText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(
+            await driver!.getText(Keys.sortKey), StringResources.mostStarsText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
+
+    test('when__try_to_get_fewest_star_projects__should__get_fewest_stars_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.fewestStarsText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(await driver!.getText(Keys.sortKey),
+            StringResources.fewestStarsText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
+
+    test('when__try_to_get_most_forks_projects__should__get_most_forks_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.mostForksText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(
+            await driver!.getText(Keys.sortKey), StringResources.mostForksText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
+
+    test(
+        'when__try_to_get_fewest_forks_projects__should__get_fewest_forks_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.fewestForksText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(await driver!.getText(Keys.sortKey),
+            StringResources.fewestForksText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
+
+    test(
+        'when__try_to_most_recently_updated_projects__should__get_most_recently_updated_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.recentlyUpdatedText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(await driver!.getText(Keys.sortKey),
+            StringResources.recentlyUpdatedText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
+    test(
+        'when__try_to_least_recently_updated_projects__should__get_least_recently_updated_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.leastRecentlyUpdatedText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(await driver!.getText(Keys.sortKey),
+            StringResources.leastRecentlyUpdatedText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
+
+    test('when__try_to_best_match_projects__should__get_best_match_text',
+        () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.homePopupMeuKey);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.bestMatchText));
+        await Future.delayed(const Duration(seconds: 1), () {});
+        expect(
+            await driver!.getText(Keys.sortKey), StringResources.bestMatchText);
+        await Future.delayed(const Duration(seconds: 1), () {});
+      });
+    });
 
     test('When__try_to_scroll__should__scroll', () async {
       await driver!.runUnsynchronized(() async {
