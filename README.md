@@ -32,8 +32,8 @@
  </table>
 
 ## Download APK
-<a id="raw-url" href="https://drive.google.com/uc?export=download&id=1lGZqyrGgFxFLUBy3GOh0QGQ_G9Nd5kw8">Production Flavor</a><br />
-<a id="raw-url" href="https://drive.google.com/uc?export=download&id=1lGU7mNcODo7MbK3zjf-kKez8eS_ZIolB">Dev Flavor</a>
+<a id="raw-url" href="https://drive.google.com/uc?export=download&id=1lLWTG4QRjgX-x30-fAuzcaBlaQg1pCLR">Production Flavor</a><br />
+<a id="raw-url" href="https://drive.google.com/uc?export=download&id=1lKxDHWC_b_QNNGBpF2vgCjM84SxbX0zT">Dev Flavor</a>
 
 ## Project Environment
 ```
