@@ -132,6 +132,27 @@ Future<void> homeTest() async {
       });
     });
 
+    test('when__try_to_tap_index_0__should__get_details_text', () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(Keys.projectCard0);
+        await Future.delayed(const Duration(seconds: 1), () {});
+        await driver!.tap(find.text(StringResources.detailsText));
+        await Future.delayed(const Duration(seconds: 3), () {});
+      });
+    });
+
+    test('When__try_to_tap_back_button__should__get_github_text', () async {
+      await driver!.runUnsynchronized(() async {
+        await Future.delayed(const Duration(seconds: 2), () {});
+        await driver!.tap(Keys.backButton);
+        await Future.delayed(const Duration(seconds: 2), () {});
+        expect(await driver!.getText(Keys.homeAppbarKey),
+            StringResources.githubText);
+        await Future.delayed(const Duration(seconds: 2), () {});
+      });
+    });
+
     test('When__try_to_scroll__should__scroll', () async {
       await driver!.runUnsynchronized(() async {
         await Future.delayed(const Duration(seconds: 2), () {});

@@ -12,4 +12,16 @@ class StringResources {
     List<String> paths = enumToString.split(".");
     return paths[paths.length - 1];
   }
+
+  static String repositoryText="Repository name :";
+  static String languageText="Language :";
+  static String visibilityText="Visibility :";
+  static String descriptionText="Description :";
+  static String createdText="Created :";
+  static String updatedText="Updated :";
+  static String pushedText="Pushed :"  ;
+  static String topicsText="Topics :";
+  static String starsText="Stars";
+  static String forksText="Forks";
+  static String detailsText="Details";
 }

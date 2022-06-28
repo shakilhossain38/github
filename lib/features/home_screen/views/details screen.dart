@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:github_repositories_list/main_app/resource/string_resources.dart';
 import '../model/github_data_model.dart';
 import 'package:intl/intl.dart';
 
@@ -132,18 +133,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
       ),
     );
     var repositoryNameWidget = commonTitleLanguageWidget(
-        title: "Repository name:", text: widget.projectItem?.fullName ?? "");
+        title: StringResources.repositoryText,
+        text: widget.projectItem?.fullName ?? "");
     var languageWidget = commonTitleLanguageWidget(
-        title: "Language:", text: widget.projectItem?.language ?? "");
+        title: StringResources.languageText,
+        text: widget.projectItem?.language ?? "");
 
     var visibilityWidget = commonTitleLanguageWidget(
-        title: "Visibility:", text: widget.projectItem?.visibility ?? "");
+        title: StringResources.visibilityText,
+        text: widget.projectItem?.visibility ?? "");
     var descriptionWidget = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Description:",
-          style: TextStyle(fontWeight: FontWeight.w600),
+        Text(
+          StringResources.descriptionText,
+          style: const TextStyle(fontWeight: FontWeight.w600),
         ),
         spaceBetweenMin,
         Text(widget.projectItem?.description ?? ""),
@@ -151,20 +155,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
     var createdAtWidget = widget.projectItem?.createdAt == null
         ? const SizedBox()
-        : commonDateWidget(title: "Created:", date: createTime.toString());
+        : commonDateWidget(
+            title: StringResources.createdText, date: createTime.toString());
     var updatedAtWidget = widget.projectItem?.updatedAt == null
         ? const SizedBox()
-        : commonDateWidget(title: "Updated:", date: updateTime.toString());
+        : commonDateWidget(
+            title: StringResources.updatedText, date: updateTime.toString());
     var pushedAtWidget = widget.projectItem?.pushedAt == null
         ? const SizedBox()
-        : commonDateWidget(title: "Pushed:", date: pushTime.toString());
+        : commonDateWidget(
+            title: StringResources.pushedText, date: pushTime.toString());
     var topicsWidget = widget.projectItem?.topics?.length == 0
         ? const SizedBox()
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Topics:",
+              Text(
+                StringResources.topicsText,
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               spaceBetweenMin,
@@ -176,16 +183,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
     var starsWidget = widget.projectItem?.forksCount == null
         ? const SizedBox()
         : commonCountWidget(
-            title: "Stars",
+            title: StringResources.starsText,
             count: (widget.projectItem?.stargazersCount ?? 0) * 1000);
     var forksWidget = widget.projectItem?.stargazersCount == null
         ? const SizedBox()
         : commonCountWidget(
-            title: "Forks",
+            title: StringResources.forksText,
             count: (widget.projectItem?.forksCount ?? 0) * 1000);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Details"),
+        title:
+            Text(StringResources.detailsText, key: const Key("detailsTextKey")),
       ),
       body: SingleChildScrollView(
         child: Column(
