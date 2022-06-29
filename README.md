@@ -3,7 +3,7 @@
   <tr>
     <td>
       <img src="assets/github.png" height=70 align="left"> 
-    <p>A Selling App
+    <p>Flutter Search on Github
       </p>
     </td>
   </tr>
@@ -97,4 +97,18 @@ For running ui tests cases run the below commands on terminal of the project
 
   
 ```
+## Build Apk
+```
+For building apk run the below commands on terminal of the project
+
+1. For Production
+  - bash build_prod_apk.sh
+
+  
+2. For Dev
+  - bash build_dev_apk.sh
+
+  
+```
+
 
