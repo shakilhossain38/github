@@ -61,7 +61,7 @@
 
 ## Used Package
 ```
-1. provide - for state management
+1. provider - for state management
 2. bot_toast - for loader and toast message
 3. http - for api calling
 4. dartz - for handling errors
